@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/test/CommandAPI.Tests/CommandAPI.Tests.csproj",
+                "${workspaceFolder}/src/CommandAPI/CommandAPI.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/test/CommandAPI.Tests/CommandAPI.Tests.csproj",
+                "${workspaceFolder}/src/CommandAPI/CommandAPI.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -32,7 +32,7 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/test/CommandAPI.Tests/CommandAPI.Tests.csproj",
+                "${workspaceFolder}/src/CommandAPI/CommandAPI.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],

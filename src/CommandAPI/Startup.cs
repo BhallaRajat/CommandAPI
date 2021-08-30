@@ -27,6 +27,9 @@ namespace CommandAPI
         
         public void ConfigureServices(IServiceCollection services)
         {
+            // services.AddDbContext<CommandContext>(opt => opt.UseNpgsql
+            // (Configuration.GetConnectionString("PostgreSqlConnection")));
+            
             var builder = new NpgsqlConnectionStringBuilder();
             builder.ConnectionString = 
                 Configuration.GetConnectionString("PostgreSqlConnection");
@@ -35,16 +38,16 @@ namespace CommandAPI
 
             services.AddDbContext<CommandContext>(opt => opt.UseNpgsql(builder.ConnectionString));
 
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt => 
-            {
-                opt.Audience = Configuration["ResourceID"];
-                opt.Authority = $"{Configuration["Instance"]}{Configuration["TenantId"]}";
-            });
+            // services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt => 
+            // {
+            //     opt.Audience = Configuration["ResourceID"];
+            //     opt.Authority = $"{Configuration["Instance"]}{Configuration["TenantId"]}";
+            // });
 
             services.AddControllers().AddNewtonsoftJson(s => {
                 s.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             });
-
+            services.AddControllers();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddScoped<ICommandAPIRepo, SqlCommandAPIRepo>();
